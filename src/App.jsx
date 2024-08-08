@@ -277,11 +277,11 @@ function App() {
         <div className="container">
             <input
                 type="text"
-                placeholder='Inserisci la stringa'
+                placeholder='Insert the sequence'
                 value={string}
                 onChange={(e) => { setString(e.target.value) }}
             />
-            <button onClick={submit}>Invia</button>
+            <button onClick={submit}>Send</button>
             {submited && (
                 <ul>
                     {Object.entries(counts).map(([letter, count]) =>
