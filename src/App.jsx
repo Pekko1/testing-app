@@ -270,17 +270,18 @@ function App() {
 
         setCounts(newCounts)
         setSubmited(true)
+        setString("")
     }
 
     return (
-        <>
+        <div className="container">
             <input
                 type="text"
-                placeholder='inserisci la stringa'
+                placeholder='Inserisci la stringa'
                 value={string}
                 onChange={(e) => { setString(e.target.value) }}
             />
-            <button onClick={submit}>invia</button>
+            <button onClick={submit}>Invia</button>
             {submited && (
                 <ul>
                     {Object.entries(counts).map(([letter, count]) =>
@@ -288,7 +289,7 @@ function App() {
                     )}
                 </ul>
             )}
-        </>
+        </div>
     )
 }
 
