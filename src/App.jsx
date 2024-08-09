@@ -253,6 +253,7 @@ function App() {
     const [string, setString] = useState("")
     const [submited, setSubmited] = useState(false)
     const [counts, setCounts] = useState({})
+    const [length, setLength] = useState(0)
 
     function submit() {
         const initialCounts = {}
@@ -268,6 +269,7 @@ function App() {
             }
         }
 
+        setLength(string.length)
         setCounts(newCounts)
         setSubmited(true)
         setString("")
@@ -289,6 +291,7 @@ function App() {
                     )}
                 </ul>
             )}
+            {submited && <div>Sequence length is : {length}</div> }
         </div>
     )
 }
