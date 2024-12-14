@@ -28,7 +28,7 @@ const ComparisonCounter = () => {
 
     return (
         <div className="flex my-3 flex-col justify-center items-center bg-gray-100">
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center gap-10 max-w-md">
+            <div className="bg-white p-6 rounded-lg shadow-lg text-ce gap-10 max-w-md">
                 <div className="flex gap-10">
                     <input
                         type="text"
