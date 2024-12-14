@@ -195,17 +195,17 @@
 //                         return oldValue + 1
 //                     })
 //                     break
-                
+
 //             }
 //         }
 //     }
-    
+
 //     return(
 //         <>
 //         <input
-//         type="text" 
-//         placeholder='inserisci la stringa' 
-//         value={string} 
+//         type="text"
+//         placeholder='inserisci la stringa'
+//         value={string}
 //         onChange={(e)=>{setString(e.target.value)}}/>
 //         <button onClick={submit}>invia</button>
 //         {submited? (
@@ -246,54 +246,45 @@
 
 // export default App
 
-import { useState } from 'react'
-import '../src/App.css'
+import { useState } from "react";
+import NormalCounter from "./components/NormalCounter";
+import ComparisonCounter from "./components/ComparisonCounter";
 
 function App() {
-    const [string, setString] = useState("")
-    const [submited, setSubmited] = useState(false)
-    const [counts, setCounts] = useState({})
-    const [length, setLength] = useState(0)
+    const [selected, setSelected] = useState(1);
 
-    function submit() {
-        const initialCounts = {}
-        for (let i = 0; i < 26; i++) {
-            initialCounts[String.fromCharCode(65 + i)] = 0
-        }
-
-        const newCounts = { ...initialCounts }
-        for (let i = 0; i < string.length; i++) {
-            const char = string[i].toUpperCase()
-            if (newCounts[char] !== undefined) {
-                newCounts[char] += 1
-            }
-        }
-
-        setLength(string.length)
-        setCounts(newCounts)
-        setSubmited(true)
-        setString("")
-    }
-
+    const handlePress = (e) => {
+        setSelected(e);
+    };
     return (
-        <div className="container">
-            <input
-                type="text"
-                placeholder='Insert the sequence'
-                value={string}
-                onChange={(e) => { setString(e.target.value) }}
-            />
-            <button onClick={submit}>Send</button>
-            {submited && (
-                <ul>
-                    {Object.entries(counts).map(([letter, count]) =>
-                        count > 0 ? <li key={letter}>{letter}: {count}</li> : null
-                    )}
-                </ul>
-            )}
-            {submited && <div>Sequence length is : {length}</div> }
-        </div>
-    )
+        <>
+            <div className="shadow bg-slate-300 flex gap-16 justify-center items-center p-2">
+                <button
+                    className={`${
+                        selected === 1
+                            ? "px-6 py-3 bg-green-600"
+                            : "px-4 py-2 bg-green-500"
+                    } rounded text-white `}
+                    onClick={() => handlePress(1)}
+                >
+                    Sequence counter
+                </button>
+                <button
+                    className={`${
+                        selected === 2
+                            ? "px-6 py-3 bg-green-600"
+                            : "px-4 py-2 bg-green-500"
+                    } rounded text-white `}
+                    onClick={() => handlePress(2)}
+                >
+                    Sequence comparison
+                </button>
+                {/* <button>TEST3</button> */}
+            </div>
+            {selected === 1 && <NormalCounter />}
+            {selected === 2 && <ComparisonCounter />}
+        </>
+    );
 }
 
-export default App
+export default App;
